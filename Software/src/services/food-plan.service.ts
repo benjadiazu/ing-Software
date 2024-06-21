@@ -33,7 +33,7 @@ export class FoodPlanService {
           id:String(counter),
           nombre:"Nombre receta",
           descripcion: "descripción breve de la receta",
-          ingredientes:["1. Leiste esto?","2. Ahora me la chupan","3. Seguiste leyendo, me la vuelves a chupar..."],
+          ingredientes:["1. Leiste esto?","2. Ahora leiste?","3. Seguiste leyendo???"],
           pasos:["asasjdghaklsdghioad aslñidhaoskldnalñkdblkasdladkla askjdhalksjdghoaisdliuasdikljbaidfjb",
             "aolsdhjasdjnpasd saldkhjaioed09pq3wepoiaksnoekd, aopsdhoalhdfiopwp9uidifd",
             "diopasudhopqwagery, sopdiqa90wpe0p9 892qwbug sueg8dwajhfe7 i 3wiu yuy 2fv"],
