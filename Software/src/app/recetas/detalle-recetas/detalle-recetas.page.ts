@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodPlanService } from 'src/services/food-plan.service';
+import { RecipeManagerService } from 'src/services/recipe-manager.service';
 import { Recipe } from 'src/interfaces/Recipe';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -12,9 +13,9 @@ import { Router } from '@angular/router';
 export class DetalleRecetasPage implements OnInit {
   recipe:Recipe|undefined = undefined;
 
-  constructor(private foodPlanService: FoodPlanService,
-              private route: ActivatedRoute,
-              private router: Router) { }
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private recipes: RecipeManagerService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -23,7 +24,7 @@ export class DetalleRecetasPage implements OnInit {
         console.log("Ha habido un problema al redirigir");
         return;
       }
-      this.recipe = this.foodPlanService.getRecipeById(recipeId); 
+      this.recipe = this.recipes.getRecipe(recipeId);
       if(this.recipe == undefined){
         console.log("No se ha encontrado la receta")
         return

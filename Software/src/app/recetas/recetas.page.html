@@ -36,10 +36,10 @@
             <div class="name-recipe-label"><ion-label>{{recipe.nombre}}</ion-label></div>
           </ion-item>
           <div class="label-option-container" slot="content">
-            <ion-button expand="block" (click)="watchRecipe(recipe)">Ver receta</ion-button>
+            <ion-button expand="block" (click)="OnClickWatchRecipe(recipe)">Ver receta</ion-button>
           </div>
           <div class="label-option-container" slot="content">
-            <ion-button expand="block" >Sustituir receta</ion-button>
+            <ion-button expand="block" (click)="OnClickReplaceRecipe(recipe)">Sustituir receta</ion-button>
           </div>
         </ion-accordion>
       </ion-accordion-group>

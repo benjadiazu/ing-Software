@@ -82,7 +82,10 @@ export class RecetasPage implements OnInit {
     sessionStorage.removeItem('selectedDay');
   }
 
-  watchRecipe(recipe:Recipe){
+  OnClickWatchRecipe(recipe:Recipe){
     this.router.navigate(['./recetas/detalle-recetas', recipe.id]);
+  }
+  OnClickReplaceRecipe(recipe:Recipe){
+    this.router.navigate(['./recetas/sustituir-receta', recipe.id]);
   }
 }

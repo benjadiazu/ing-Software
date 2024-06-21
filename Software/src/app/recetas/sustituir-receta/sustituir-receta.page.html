@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Escoge una receta!</ion-title>
+    <ion-button (click)="OnClickGoBack()">Volver</ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar placeholder="O busca una receta!"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngFor = "let rec of recipes">
+    <ion-card button (click)="OnClickWatchRecipe(rec)">
+      <img alt="Silhouette of mountains" src="{{rec?.img}}" />
+      <ion-card-header>
+        <ion-card-title>{{rec?.nombre}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>{{rec?.descripcion}}</ion-card-content>
+    </ion-card>
+
+  </ion-list>
+</ion-content>

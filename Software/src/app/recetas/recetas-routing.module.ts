@@ -11,7 +11,12 @@ const routes: Routes = [
   {
     path: 'detalle-recetas/:id',
     loadChildren: () => import('./detalle-recetas/detalle-recetas.module').then( m => m.DetalleRecetasPageModule)
+  },
+  {
+    path: 'sustituir-receta/:id',
+    loadChildren: () => import('./sustituir-receta/sustituir-receta.module').then( m => m.SustituirRecetaPageModule)
   }
+
 
 ];
 

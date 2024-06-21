@@ -11,7 +11,7 @@ export class FoodPlanService {
   private allRecipes:Recipe[] = [];
 
   constructor() {
-    console.log("entra al servicio")
+    //Ajustar el método
     this.addData();
   }
 
