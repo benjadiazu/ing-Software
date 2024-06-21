@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-button (click)="OnClickGoBack()">Volver</ion-button>
+    <ion-title>Vamos a ver tu receta!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="ValidateRecipe()">
+    <div>
+      <ion-card>
+        <img alt="Silhouette of mountains" src={{recipe?.img}}/>
+      </ion-card>
+      <ion-card-header>
+        <ion-card-title>{{recipe?.nombre}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>{{recipe?.descripcion}}</ion-card-content>
+    </div>
+    <div>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Ingredientes</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngFor = "let ingredient of recipe?.ingredientes">
+            <ion-item>
+              <ion-label>{{ingredient}}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Pasos de preparación</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list *ngFor = "let step of recipe?.pasos">
+            <ion-item>
+              <ion-label>{{step}}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
