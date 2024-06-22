@@ -59,10 +59,10 @@ export class FoodPlanService {
       for(let k:number = 0; k < 5; k++){
         let recipe:Recipe = {
           id:String(counter),
-          nombre:"Nombre receta",
-          descripcion: "descripción breve de la receta",
-          ingredientes:["1. Leiste esto?","2. Ahora leiste?","3. Seguiste leyendo???"],
-          pasos:["asasjdghaklsdghioad aslñidhaoskldnalñkdblkasdladkla askjdhalksjdghoaisdliuasdikljbaidfjb",
+          name:"Nombre receta",
+          description: "descripción breve de la receta",
+          ingredients:["1. Leiste esto?","2. Ahora leiste?","3. Seguiste leyendo???"],
+          steps:["asasjdghaklsdghioad aslñidhaoskldnalñkdblkasdladkla askjdhalksjdghoaisdliuasdikljbaidfjb",
             "aolsdhjasdjnpasd saldkhjaioed09pq3wepoiaksnoekd, aopsdhoalhdfiopwp9uidifd",
             "diopasudhopqwagery, sopdiqa90wpe0p9 892qwbug sueg8dwajhfe7 i 3wiu yuy 2fv"],
           img: "assets/img/pollo-curry-manzana.jpg"
@@ -89,5 +89,20 @@ export class FoodPlanService {
 
   mostrar_recetas(){
     this.foodplan.mostrar_recetas();
+  }
+
+  countRecipe():{[ingredient:string]:number}{
+    let ingredientCount: { [ingredient: string]: number } = {};
+
+    for(let recipe of this.allRecipes){
+      for(let ing of recipe.ingredients){
+        if (ingredientCount[ing]) {
+          ingredientCount[ing]++;
+        } else {
+          ingredientCount[ing] = 1;
+        }
+      }
+    }
+    return ingredientCount;
   }
 }

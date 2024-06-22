@@ -1,5 +1,4 @@
 import { Day } from "./Day";
-import { Recipe } from "src/interfaces/Recipe";
 
 const regex = /[\/\-.]/;
 

@@ -15,9 +15,9 @@
     <ion-card button (click)="OnClickWatchRecipe(rec)">
       <img alt="Silhouette of mountains" src="{{rec?.img}}" />
       <ion-card-header>
-        <ion-card-title>{{rec?.nombre}}</ion-card-title>
+        <ion-card-title>{{rec?.name}}</ion-card-title>
       </ion-card-header>
-      <ion-card-content>{{rec?.descripcion}}</ion-card-content>
+      <ion-card-content>{{rec?.description}}</ion-card-content>
       <div class="button-custom"><ion-button (click)="ReplaceRecipe($event,rec.id)">Sustituir por esta receta</ion-button></div>  
     </ion-card>
   </ion-list>

@@ -58,10 +58,10 @@ export class SustituirRecetaPage implements OnInit {
     for(let i:number = 0; i < 5; i++){
       this.recipes.push({
         id:"receta_de_reemplazo_n_"+String(i),
-        nombre:"receta_de_reemplazo_n_"+String(i),
-        descripcion:"receta sustituta",
-        ingredientes:["1","2"],
-        pasos:["1","2","3"],
+        name:"receta_de_reemplazo_n_"+String(i),
+        description:"receta sustituta",
+        ingredients:["1","2"],
+        steps:["1","2","3"],
         img:"assets/img/pollo-curry-manzana.jpg"
       })
     }

@@ -41,7 +41,7 @@ export class Day{
 
     mostrar_receta(){
       for(let recipe of this.food){
-        console.log(recipe.nombre);
+        console.log(recipe.name);
       }
     }
   }

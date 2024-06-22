@@ -1,8 +1,8 @@
 export interface Recipe{
     id:string,
-    nombre:string,
-    descripcion:string,
-    ingredientes:string[],
-    pasos:string[],
+    name:string,
+    description:string,
+    ingredients:string[],
+    steps:string[],
     img:string
 }

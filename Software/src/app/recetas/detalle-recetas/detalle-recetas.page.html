@@ -12,9 +12,9 @@
         <img alt="Silhouette of mountains" src={{recipe?.img}}/>
       </ion-card>
       <ion-card-header>
-        <ion-card-title>{{recipe?.nombre}}</ion-card-title>
+        <ion-card-title>{{recipe?.name}}</ion-card-title>
       </ion-card-header>
-      <ion-card-content>{{recipe?.descripcion}}</ion-card-content>
+      <ion-card-content>{{recipe?.description}}</ion-card-content>
     </div>
     <div>
       <ion-card>
@@ -22,7 +22,7 @@
           <ion-card-title>Ingredientes</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-list *ngFor = "let ingredient of recipe?.ingredientes">
+          <ion-list *ngFor = "let ingredient of recipe?.ingredients">
             <ion-item>
               <ion-label>{{ingredient}}</ion-label>
             </ion-item>
@@ -34,7 +34,7 @@
           <ion-card-title>Pasos de preparación</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-list *ngFor = "let step of recipe?.pasos">
+          <ion-list *ngFor = "let step of recipe?.steps">
             <ion-item>
               <ion-label>{{step}}</ion-label>
             </ion-item>

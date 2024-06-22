@@ -1,0 +1,44 @@
+ion-header{
+    display: flex;
+    margin-top:10px;
+    padding-bottom: 10px;
+    justify-content: center; 
+    align-items: center; 
+}
+
+ion-card-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    white-space: normal;
+    display: block;
+    line-height: 1.2;
+    max-width: calc(100% - 20px);
+  }
+
+ion-list {
+  border: 1px solid #ccc; /* Añade un borde sólido con color gris claro */
+  border-radius: 8px; /* Añade esquinas redondeadas */
+}
+
+ion-item {
+  padding: 12px; /* Añade espacio interior para los items */
+  border-bottom: 1px solid #eee; /* Añade un borde inferior a cada item */
+}
+
+ion-item:last-child {
+  border-bottom: none; /* Quita el borde inferior del último item para evitar duplicación */
+}
+
+ion-label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-align {
+  text-align: left;
+}
+  
+.right-align {
+  text-align: right;
+}

@@ -10,7 +10,11 @@ const routes: Routes = [
   {
     path: 'recetas',
     loadChildren: () => import('./recetas/recetas.module').then( m => m.RecetasPageModule),
+  },  {
+    path: 'ingredientes',
+    loadChildren: () => import('./ingredientes/ingredientes.module').then( m => m.IngredientesPageModule)
   },
+
 
 ];
 
