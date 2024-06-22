@@ -17,7 +17,17 @@ export class Day{
       if(this.food.length == 0) return 0;
       return this.food.length; 
     }
-
+    getRecipes(){
+      return this.food;
+    }
+    getRecipeById(id:string):Recipe|undefined{
+      for(let i = 0 ; i < this.food.length ; i++){
+        if(this.food[i].id === id){
+          return this.food[i];
+        }
+      }
+      return undefined;
+    }
     replaceRecipe(id:string, rec:Recipe):boolean{
       if(rec == undefined) return false; 
       for(let i = 0; i < this.food.length ; i++){

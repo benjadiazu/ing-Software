@@ -16,6 +16,16 @@ export class FoodPlan{
   getSizeRecipes(idx:number){
     return this.days[idx].getSizeRecipes();
   }
+  getSize(){
+    return this.days.length;
+  }
+  getDayByIdx(idx:number): Day | null{
+    return this.days[idx];
+  }
+
+  getRecipeOfDay(idx:number, day:number){
+    return this.days[day].getRecipe(idx);
+  }
 
   getDay(date:string):Day | null{
     let val:string[] = date.split(regex);
@@ -31,9 +41,9 @@ export class FoodPlan{
     return null;
   }
 
-  replaceDay(day:Day):boolean{
+  replaceDay(date:string, day:Day):boolean{
     for(let i:number = 0; i < this.days.length ; i++){
-      if(this.days[i].day == Number(day.day)){
+      if(this.days[i].day == Number(date)){
         this.days[i] = day;
         return true;
       }

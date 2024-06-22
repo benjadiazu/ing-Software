@@ -14,6 +14,7 @@ import { Location } from '@angular/common';
 })
 export class SustituirRecetaPage implements OnInit {
   recipe:Recipe|undefined = undefined;
+  recipeId: string | null = '';
   recipes:Recipe[] = [];
   day:string | null ='';
   constructor(private route:ActivatedRoute,
@@ -28,10 +29,13 @@ export class SustituirRecetaPage implements OnInit {
       const recipeId = params.get('id');
       const recipeDay = params.get('day');
       this.day = recipeDay;
+      this.recipeId = recipeId;
       if(recipeId == null){
         console.log("Ha habido un problema al redirigir");
         return;
       }
+      console.log(this.day);
+      console.log(this.recipeId);
       this.recipe = this.foodPlanService.getRecipeById(recipeId); 
       if(this.recipe == undefined){
         console.log("No se ha encontrado la receta")
@@ -53,8 +57,8 @@ export class SustituirRecetaPage implements OnInit {
     // 2.Tipo de comida (Desayuno, colación, almuerzo, etc.)
     for(let i:number = 0; i < 5; i++){
       this.recipes.push({
-        id:"receta_de_reemplazo_n:"+String(i),
-        nombre:"receta_de_reemplazo_n:"+String(i),
+        id:"receta_de_reemplazo_n_"+String(i),
+        nombre:"receta_de_reemplazo_n_"+String(i),
         descripcion:"receta sustituta",
         ingredientes:["1","2"],
         pasos:["1","2","3"],
@@ -67,7 +71,9 @@ export class SustituirRecetaPage implements OnInit {
     this.router.navigate(['./recetas/detalle-recetas', this.day ,recipe.id]);
   }
 
-  ReplaceRecipe(idRecipe:string){
+  ReplaceRecipe(event:Event, idRecipe:string){
+    event.stopPropagation();
+
     if(this.day==null){
       console.log("error al cargar el día");
       return
@@ -87,13 +93,19 @@ export class SustituirRecetaPage implements OnInit {
       return
     }
     if(day_aux.replaceRecipe(this.recipe?.id, recipe_to_sustitute) && day_aux!=undefined){
-      this.foodPlanService.replaceDay(day_aux);
+      this.foodPlanService.replaceDay(this.day, day_aux);
+      /*
+      this.recipes = day_aux.getRecipes();
+      this.recipeId = idRecipe;
+      this.recipe = day_aux.getRecipeById(this.recipe);
       console.log("Se reeemplazo la receta");
+      */
       this.OnClickGoBack();
     }else{
       console.log("No se pudo reemplazar");
     }
   }
+
   goBack() {
     const previousUrl = this.location.back();
     console.log('Ruta anterior:', previousUrl);

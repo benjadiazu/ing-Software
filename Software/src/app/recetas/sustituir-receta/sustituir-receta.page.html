@@ -18,7 +18,7 @@
         <ion-card-title>{{rec?.nombre}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>{{rec?.descripcion}}</ion-card-content>
+      <div class="button-custom"><ion-button (click)="ReplaceRecipe($event,rec.id)">Sustituir por esta receta</ion-button></div>  
     </ion-card>
-    <div class="button-custom"><ion-button (click)="ReplaceRecipe(rec.id)">Sustituir por esta receta</ion-button></div>  
   </ion-list>
 </ion-content>

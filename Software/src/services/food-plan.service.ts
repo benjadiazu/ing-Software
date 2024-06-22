@@ -29,11 +29,25 @@ export class FoodPlanService {
     return this._foodplan.asObservable();
   } 
 
-  replaceDay(day:Day): boolean{
-    if(this.foodplan.replaceDay(day)){
+  updateRecipes(){
+    this.allRecipes = []
+    for(let i = 0; i < this.foodplan.getSize(); i++){
+      let aux:Day|null = this.foodplan.getDayByIdx(i);
+      if(aux != null){
+        for(let k = 0; k < aux.getSizeRecipes() ;k++){
+          this.allRecipes.push(aux.getRecipe(k));
+        }
+      }
+    }
+  }
+
+  replaceDay(date:string, day:Day): boolean{
+    if(this.foodplan.replaceDay(date, day)){
+      this.updateRecipes();
       this._foodplan.next(this.foodplan);
       return true;
     }
+    this._foodplan.next(this.foodplan);
     return false;
   }
 
@@ -64,6 +78,7 @@ export class FoodPlanService {
       this.foodplan.addDay(aux);
       
       console.log(this.foodplan.getSizeRecipes(i));
+      this._foodplan.next(this.foodplan);
     }
   }
 
