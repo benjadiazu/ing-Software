@@ -6,6 +6,7 @@ import { FoodPlanService } from 'src/services/food-plan.service';
 import { RecipeManagerService } from 'src/services/recipe-manager.service';
 import { Day } from 'src/classes/Day';
 import { Location } from '@angular/common';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sustituir-receta',
@@ -21,7 +22,8 @@ export class SustituirRecetaPage implements OnInit {
               private router:Router,
               private foodPlanService: FoodPlanService,
               private recipeManager: RecipeManagerService,
-              private location: Location) { }
+              private location: Location,
+              private alertController: AlertController) { }
 
   ngOnInit() {
     this.foodPlanService.getObservableFoodPlan();
@@ -71,8 +73,7 @@ export class SustituirRecetaPage implements OnInit {
     this.router.navigate(['./recetas/detalle-recetas', this.day ,recipe.id]);
   }
 
-  ReplaceRecipe(event:Event, idRecipe:string){
-    event.stopPropagation();
+  ReplaceRecipe(idRecipe:string){
 
     if(this.day==null){
       console.log("error al cargar el día");
@@ -109,5 +110,34 @@ export class SustituirRecetaPage implements OnInit {
   goBack() {
     const previousUrl = this.location.back();
     console.log('Ruta anterior:', previousUrl);
+  }
+
+  async OnClickReplaceRecipe(event:Event,id:string) {
+    event.stopPropagation();
+    const alert = await this.alertController.create({
+      header: '¿Esta seguro de reemplazar la receta?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Si',
+          role: 'si',
+          handler: () => {
+            console.log('Ok clicked');
+          }
+        }
+      ],
+    });
+
+    await alert.present();
+    const { role } = await alert.onDidDismiss();
+    if(role === 'si'){
+      this.ReplaceRecipe(id);
+    }
   }
 }
