@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FoodPlan } from 'src/classes/FoodPlan';
 import { Day } from 'src/classes/Day';
 import { Recipe } from 'src/interfaces/Recipe';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Recipe } from 'src/interfaces/Recipe';
 export class FoodPlanService {
   private foodplan:FoodPlan = new FoodPlan();
   private allRecipes:Recipe[] = [];
+  private _foodplan:BehaviorSubject<FoodPlan> = new BehaviorSubject<FoodPlan>(this.foodplan);
 
   constructor() {
     //Ajustar el método
@@ -21,6 +23,18 @@ export class FoodPlanService {
 
   getSizeRecipes(idx:number):number{
     return this.foodplan.getSizeRecipes(idx);
+  }
+
+  getObservableFoodPlan(){
+    return this._foodplan.asObservable();
+  } 
+
+  replaceDay(day:Day): boolean{
+    if(this.foodplan.replaceDay(day)){
+      this._foodplan.next(this.foodplan);
+      return true;
+    }
+    return false;
   }
 
   addData(){
@@ -56,5 +70,9 @@ export class FoodPlanService {
   getRecipeById(id:string):Recipe | undefined{
     let recipe:Recipe|undefined = this.allRecipes.find(recipe => recipe.id == id);
     return recipe || undefined;
+  }
+
+  mostrar_recetas(){
+    this.foodplan.mostrar_recetas();
   }
 }

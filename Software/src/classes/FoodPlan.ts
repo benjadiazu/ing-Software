@@ -1,4 +1,5 @@
 import { Day } from "./Day";
+import { Recipe } from "src/interfaces/Recipe";
 
 const regex = /[\/\-.]/;
 
@@ -28,5 +29,21 @@ export class FoodPlan{
       }
     };
     return null;
+  }
+
+  replaceDay(day:Day):boolean{
+    for(let i:number = 0; i < this.days.length ; i++){
+      if(this.days[i].day == Number(day.day)){
+        this.days[i] = day;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  mostrar_recetas(){
+    for(let day of this.days){
+      day.mostrar_receta();
+    }
   }
 }

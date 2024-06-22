@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FoodPlanService } from 'src/services/food-plan.service';
+import { Location } from '@angular/common';
 import { RecipeManagerService } from 'src/services/recipe-manager.service';
 import { Recipe } from 'src/interfaces/Recipe';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-recetas',
@@ -12,11 +11,16 @@ import { Router } from '@angular/router';
 })
 export class DetalleRecetasPage implements OnInit {
   recipe:Recipe|undefined = undefined;
+  currentId:string = '';
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
-              private recipes: RecipeManagerService) { }
+              private recipes: RecipeManagerService,
+              private location: Location) { }
 
+  goBack() {
+    const previousUrl = this.location.back();
+    console.log('Ruta anterior:', previousUrl);
+  }
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const recipeId = params.get('id'); // Convertir a número si es necesario
@@ -30,6 +34,7 @@ export class DetalleRecetasPage implements OnInit {
         return
       }
       console.log("Se pudo encontrar la receta!");
+      this.currentId = recipeId;
     });
   }
   ValidateRecipe():boolean{
@@ -40,6 +45,6 @@ export class DetalleRecetasPage implements OnInit {
   }
 
   OnClickGoBack(){
-    this.router.navigate(['/recetas']);
+    this.goBack();
   }
 }

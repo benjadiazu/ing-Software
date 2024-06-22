@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Recipe } from 'src/interfaces/Recipe';
 import { FoodPlanService } from 'src/services/food-plan.service';
+import { RecipeManagerService } from 'src/services/recipe-manager.service';
+import { Day } from 'src/classes/Day';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-sustituir-receta',
@@ -12,13 +15,19 @@ import { FoodPlanService } from 'src/services/food-plan.service';
 export class SustituirRecetaPage implements OnInit {
   recipe:Recipe|undefined = undefined;
   recipes:Recipe[] = [];
+  day:string | null ='';
   constructor(private route:ActivatedRoute,
               private router:Router,
-              private foodPlanService: FoodPlanService) { }
+              private foodPlanService: FoodPlanService,
+              private recipeManager: RecipeManagerService,
+              private location: Location) { }
 
   ngOnInit() {
+    this.foodPlanService.getObservableFoodPlan();
     this.route.paramMap.subscribe(params => {
-      const recipeId = params.get('id'); // Convertir a número si es necesario
+      const recipeId = params.get('id');
+      const recipeDay = params.get('day');
+      this.day = recipeDay;
       if(recipeId == null){
         console.log("Ha habido un problema al redirigir");
         return;
@@ -55,6 +64,38 @@ export class SustituirRecetaPage implements OnInit {
   }
 
   OnClickWatchRecipe(recipe:Recipe){
-    this.router.navigate(['./recetas/detalle-recetas', recipe.id]);
+    this.router.navigate(['./recetas/detalle-recetas', this.day ,recipe.id]);
+  }
+
+  ReplaceRecipe(idRecipe:string){
+    if(this.day==null){
+      console.log("error al cargar el día");
+      return
+    }
+    let day_aux: Day|null = this.foodPlanService.getDay(this.day);
+    if(day_aux == null){
+      console.log("No se pudo encontrar el dia");
+      return
+    }
+    let recipe_to_sustitute:Recipe| undefined = this.recipeManager.getRecipe(idRecipe);
+    if(recipe_to_sustitute == undefined){
+      console.log("Error al usar el servicio");
+      return
+    }
+    if(this.recipe==undefined){
+      console.log("Error en los datos");
+      return
+    }
+    if(day_aux.replaceRecipe(this.recipe?.id, recipe_to_sustitute) && day_aux!=undefined){
+      this.foodPlanService.replaceDay(day_aux);
+      console.log("Se reeemplazo la receta");
+      this.OnClickGoBack();
+    }else{
+      console.log("No se pudo reemplazar");
+    }
+  }
+  goBack() {
+    const previousUrl = this.location.back();
+    console.log('Ruta anterior:', previousUrl);
   }
 }

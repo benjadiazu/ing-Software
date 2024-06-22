@@ -9,11 +9,15 @@ const routes: Routes = [
     component: RecetasPage
   },
   {
-    path: 'detalle-recetas/:id',
+    path: 'detalle-recetas/:day/:id',
     loadChildren: () => import('./detalle-recetas/detalle-recetas.module').then( m => m.DetalleRecetasPageModule)
   },
   {
-    path: 'sustituir-receta/:id',
+    path: 'sustituir-receta/:day/:id/id',
+    loadChildren: () => import('./sustituir-receta/sustituir-receta.module').then( m => m.SustituirRecetaPageModule)
+  },
+  {
+    path: 'sustituir-receta/:day/:id',
     loadChildren: () => import('./sustituir-receta/sustituir-receta.module').then( m => m.SustituirRecetaPageModule)
   }
 

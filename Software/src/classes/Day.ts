@@ -17,5 +17,22 @@ export class Day{
       if(this.food.length == 0) return 0;
       return this.food.length; 
     }
+
+    replaceRecipe(id:string, rec:Recipe):boolean{
+      if(rec == undefined) return false; 
+      for(let i = 0; i < this.food.length ; i++){
+        if(id === this.food[i].id){
+          this.food[i] = rec;
+          return true;
+        }
+      }
+      return false;
+    }
+
+    mostrar_receta(){
+      for(let recipe of this.food){
+        console.log(recipe.nombre);
+      }
+    }
   }
   
