@@ -1,0 +1,27 @@
+{
+	"Cantidad_de_Personas": 10,
+	"Cantidad_de_Zonas_Peligrosas": 4,
+	"Fecha": "20-06-2024",
+	"ID_Ruta": 110,
+	"ID_Usuario": 1414,
+	"Personas_Heridas": 2,
+	"Personas_Ilesas": 8
+}
+
+{
+	"Contraseña": "Lesos",
+	"Correo": "lesos.cl@yahoo.es",
+	"Nombre": "Vicente"
+}
+
+{
+	"Contraseña": "java",
+	"Correo": "thomas.molina@andinoapp.cl",
+	"Nombre": "Thomas"
+}
+
+{
+	"Contraseña": "Halo",
+	"Correo": "jorge.palacios@yahoo.es",
+	"Nombre": "Jorge"
+}
