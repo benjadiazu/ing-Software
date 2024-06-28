@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref= "/cuenta/login"
+        text="Volver"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1 align="center" style="margin-top: 60px;">Crear cuenta</h1>
+
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="registro" style="padding: 20px;">
+
+      <!-- USUARIO -->
+      <ion-input 
+      label="Nombre de usuario" 
+      formControlName="usuario"
+      label-placement="stacked"
+      [errorText]="formError('usuario')" 
+      fill="solid" 
+      type="text">
+        <div slot="label">Nombre <ion-text color="danger">(Required)</ion-text></div>
+      </ion-input>
+
+      <br>
+      <!-- email -->
+      <ion-input
+        label="Correo"
+        type="email"  
+        formControlName="correo"
+        label-placement="stacked" 
+        [errorText]="formError('correo')"
+        fill="solid">
+          <div slot="label">Email <ion-text color="danger">(Required)</ion-text></div>
+      </ion-input>
+
+      <br>
+
+      <!-- Contraseña -->
+      <ion-input 
+        label="Contraseña"
+        type="password"
+        formControlName="password"
+        labelPlacement="stacked" 
+        [errorText]="formError('password')"
+        fill="solid">
+
+        <div slot="label">Contraseña <ion-text color="danger">(Required)</ion-text></div>
+        <ion-input-password-toggle color="medium" slot="end"></ion-input-password-toggle>
+      </ion-input>
+      
+      <br>
+      <!-- Confirmar Contraseña -->
+      <ion-input 
+        label="Confirmar contraseña" 
+        type="password"
+        formControlName="confirm_password"
+        labelPlacement="stacked" 
+        [errorText]="formError('confirm_password')"
+        fill="solid">
+
+        <div slot="label">Confirma tu contraseña <ion-text color="danger">(Required)</ion-text></div>
+        <ion-input-password-toggle color="medium" slot="end"></ion-input-password-toggle>
+
+      </ion-input>
+    
+    </div>
+      <br>
+      
+      <!-- Enviar formulario -->
+      <div style="padding: 30px 40px;">
+        <ion-button
+          id="present-alert"
+          shape="round" 
+          size="medium" 
+          expand="full" 
+          color="primary"
+          type="submit"
+          [disabled]="!formulario.valid"
+          
+          routerLink="../../generar-presupuesto"
+          >Crear cuenta</ion-button>
+      </div>
+      <ion-alert
+        trigger="present-alert"
+        header="Cuenta creada exitosamente"
+        [buttons]='alertbuttons'
+      ></ion-alert>
+  </form>
+</ion-content>

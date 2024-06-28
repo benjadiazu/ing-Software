@@ -1,0 +1,31 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>generar_presupuesto</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true" class="ion-padding centrar-contenido">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">generar_presupuesto</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="centrar-texto">
+      <p class="presupuesto-texto">Ingrese su presupuesto</p>
+      <ion-input class="presupuesto-texto_2"
+        formControlName="monto"
+        placeholder="EJ: $10.000"
+        [errorText]= "formError('monto')"
+        type="text" 
+        inputmode="numeric" 
+        pattern="[0-9]*"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+      </ion-input>
+
+      <ion-button class="boton" routerLink="../preferencias" [disabled]="!formulario.valid" type="submit" >Siguiente</ion-button>
+    </div>
+  </form>
+
+</ion-content>

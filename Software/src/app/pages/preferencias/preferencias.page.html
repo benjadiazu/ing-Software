@@ -1,0 +1,60 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>preferencias</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+
+    <p class="centrar-texto">Seleccione los ingredientes que no consume</p>
+
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+      <ion-item >
+        <ion-select formControlName="ingredientes" aria-label="Fruit" placeholder="Ingredientes" [multiple]="true">
+          <ion-select-option value="arroz">Arroz</ion-select-option>
+          <ion-select-option value="Huevos">Huevos</ion-select-option>
+          <ion-select-option value="Carne">Carne</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-label *ngIf="formError('ingredientes')" color="danger">
+        {{ formError('ingredientes') }}
+      </ion-label>
+      
+
+      <div class="centrar-texto">
+        <p class="centrar-texto">¿Cuántos días dura el plan alimenticio?</p>
+        <ion-input 
+          class="centrar-texto_2"
+          formControlName="dias"
+          placeholder="EJ: 30 días"
+          type="text"
+          [errorText]="formError('dias')"
+          inputmode="numeric"
+          pattern="[0-9]*" 
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+        </ion-input>
+
+
+        <ion-button 
+          class="boton"
+          id="present-alert"
+          type="submit"
+          [disabled]="!formulario.valid"
+          routerLink="../home">Crear plan alimenticio
+        </ion-button>
+
+        <ion-alert
+          trigger="present-alert"
+          header="Plan alimenticio creado exitosamente"
+          [buttons]='alertbuttons'>
+        </ion-alert>
+
+      </div>
+
+    </form>
+
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,20 @@
+.centrar-texto {
+    text-align:left;
+    font-size: 25px;
+}
+
+.centrar-texto_2 {
+    // border-bottom: 1px solid #ccc;
+    font-size: 25px;
+    text-align:center;
+}
+
+.boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // width: 200px;
+    height: 60px; 
+    font-size: 18px; 
+    margin-top: 100px;
+}

@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>presupuesto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">presupuesto</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <h1>Total</h1>
+  <p *ngIf = "userInfo">
+    $ {{userInfo[1].Presupuesto}}
+  </p>
+
+  <div style="padding: 100px 130px;">
+    <ion-button>
+      Cambiar presupuesto
+    </ion-button>
+  </div>
+
+</ion-content>

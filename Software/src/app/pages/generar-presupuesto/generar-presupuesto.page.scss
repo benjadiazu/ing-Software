@@ -1,0 +1,35 @@
+.ion-content{
+    --background: #
+}
+
+.centrar-contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .centrar-texto {
+    text-align: center;
+  }
+
+  .presupuesto-texto {
+    font-size: 35px;
+  }
+  
+  .presupuesto-texto_2 {
+    // border-bottom: 1px solid #ccc;
+    font-size: 35px;
+  }
+
+  .centrar-texto{
+    margin-top: 180px;
+  }
+
+  .boton {
+    width: 200px;
+    height: 60px; 
+    font-size: 18px; 
+    margin-top: 130px;
+  }

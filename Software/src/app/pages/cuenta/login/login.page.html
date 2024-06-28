@@ -1,0 +1,52 @@
+<ion-content>
+  
+  <h1 align="center" style="margin-top: 100px;">Iniciar Sesión</h1>
+  
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+    <!-- INPUT email -->
+    <div class="registro" style="padding: 20px;">
+      <p *ngIf="errorMessage" class="centered-text" style="color: red;">{{ errorMessage }}</p>
+      <ion-input
+        label="Correo"
+        label-placement="stacked"
+        type="email"  
+        formControlName="correo"
+        [errorText]="formError('correo')"
+        fill="solid">
+         <div slot="label">RUT <ion-text color="danger">(requerido)</ion-text></div>
+      </ion-input>
+      <br>
+      
+      <!-- INPUT contraseña -->
+      <ion-input 
+        label="Contraseña"
+        type="password" 
+        formControlName="password"
+        label-placement="stacked" 
+        [errorText]="formError('password')"
+        fill="solid">
+          <div slot="label">Contraseña <ion-text color="danger">(requerido)</ion-text></div>
+          <ion-input-password-toggle color="medium" slot="end"></ion-input-password-toggle>
+      </ion-input>
+
+      <!-- <p class="centered-text" style="margin-top: -5px;"><a>Forgot password?</a></p> -->
+    </div>
+    
+    <!-- botón login -->
+    <div style="padding: 0px 40px;">
+      <ion-button 
+        shape="round" 
+        size="medium" 
+        expand="full" 
+        color="primary"
+        type="submit"
+        [disabled]="!formulario.valid"
+        >Iniciar Sesión</ion-button>
+        
+      <p class="centered-text">¿No tienes una cuenta? <a routerLink="/cuenta/registro/">Registrate</a></p>
+    </div>
+  </form>
+ <!-- <app-continue-with></app-continue-with> -->
+  
+</ion-content>
