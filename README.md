@@ -19,7 +19,7 @@
 - Primero se tiene que ejecutar el Backend, por lo que se debe abrir una nueva terminal (command prompt) y ubicarse en la carpeta src/Backend con el comando cd, luego se ejecuta el siguiente comando: python.exe apiDB.py
 <br>
 
-- Una vez se está ejecutando el Backend se debe abrir una nueva terminal (command prompt) y ubicarse en la \Software, para luego ejecutar el siguiente comando: ionic serve
+- Una vez se está ejecutando el Backend se debe abrir una nueva terminal (command prompt) y ubicarse en \Software, para luego ejecutar el siguiente comando: ionic serve
 
 <br>
 
