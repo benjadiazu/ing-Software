@@ -10,7 +10,7 @@
 
 ## Ejecución
 
-- Primero se debe montar la base de datos. Para montarla se necesita el software XAMPP
+- Primero se debe montar la base de datos. Para montarla se necesita el software XAMPP e importar el archivo protctosoftware(1).sql El archivo se encuentra en la carpeta Backend, en src/Backend
 <br>
 
 - Una vez que la base de datos está montada, se procede a ejecutar el prototipo. Para ello, se debe utilizar Visual Studio code. 
