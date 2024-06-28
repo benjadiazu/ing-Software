@@ -8,7 +8,7 @@
 -Thomas Molina
 <br>
 
-##Ejecución
+## Ejecución
 
 Primero se debe montar la base de datos. Para montarla se necesita el software XAMPP
 <br>
