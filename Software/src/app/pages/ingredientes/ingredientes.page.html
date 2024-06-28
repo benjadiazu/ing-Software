@@ -1,13 +1,20 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>ingredientes</ion-title>
-  </ion-toolbar>
+<ion-header>
+  <ion-card>
+    <ion-card-title class="ion-text-wrap">
+      Estos son los ingredientes de tu plan!
+    </ion-card-title>
+  </ion-card>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">ingredientes</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    
+    <ion-list class="ion-padding ion-margin">
+      <ion-item *ngFor="let ingredient of getIngredientEntries()">
+        <ion-label class="left-align">{{ ingredient[0] }}</ion-label>
+        <ion-label class="right-align">x{{ ingredient[1] }}</ion-label>
+      </ion-item>
+    
+    </ion-list>
+  </ion-card>
 </ion-content>

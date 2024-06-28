@@ -1,0 +1,43 @@
+.mesagge-of-title{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    font-size: 150%;
+}
+
+#input-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-option-container{
+    padding:10px;
+}
+
+.title-container{
+    display: flex;
+    align-items: center; 
+    font-size: 1.5rem; 
+    padding: 20px; 
+    margin: 10px; 
+}
+
+.title-option-container{
+    padding-left: 7%;
+}
+
+.label-option-container{
+    padding:5px;
+}
+
+.image-container{
+    border-radius: 15px;
+    overflow: hidden;
+    margin:10px; 
+}
+
+.name-recipe-label{
+    padding-left: 10%;
+}

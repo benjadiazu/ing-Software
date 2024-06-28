@@ -1,13 +1,48 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>recetas</ion-title>
+    <ion-title>Recetas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">recetas</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div>
+    <div class="mesagge-of-title">
+      <ion-label *ngIf="!mostrar_recetas">Estas son las recetas del día <br> {{day}} de tu plan.</ion-label>
+      <ion-label *ngIf="mostrar_recetas">Ingrese el día que desea <br> ver sus recetas.</ion-label>
+    </div>
+    <div class="recipe-section">
+
+      <div id="input-content" *ngIf="mostrar_recetas">
+        <div class="input-option-container">
+          <ion-item>
+            <ion-label position="floating">Ingrese aquí su día</ion-label>
+            <ion-input type="text" [(ngModel)]="day"></ion-input>
+          </ion-item>
+        </div>
+        <div class="input-option-container">
+          <ion-button id="open-loading" (click)="search_recipe(day)">Agregar</ion-button>
+        </div>
+        
+      </div>
+      <div class="title-container" *ngIf="!mostrar_recetas">
+        <div class="title-option-container"><ion-icon name="receipt-outline"></ion-icon></div>
+        <div class="title-option-container"><ion-label>Recetas</ion-label></div>
+        <div class="title-option-container"><ion-button (click)="restaure_page()">Cambiar día</ion-button></div>
+      </div>
+      <ion-accordion-group  expand="inset" *ngIf="!mostrar_recetas">
+        <ion-accordion *ngFor="let recipe of recipes">
+          <ion-item slot="header" color="light">
+            <div class="image-container"><ion-img [src]="recipe.img" style="width: 50px; height: 50px;"></ion-img></div>
+            <div class="name-recipe-label"><ion-label>{{recipe.name}}</ion-label></div>
+          </ion-item>
+          <div class="label-option-container" slot="content">
+            <ion-button expand="block" (click)="OnClickWatchRecipe(recipe)">Ver receta</ion-button>
+          </div>
+          <div class="label-option-container" slot="content">
+            <ion-button expand="block" (click)="OnClickReplaceRecipe(recipe)">Sustituir receta</ion-button>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </div>
+  </div>
 </ion-content>
